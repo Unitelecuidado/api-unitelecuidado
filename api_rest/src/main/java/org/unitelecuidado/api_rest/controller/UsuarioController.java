@@ -6,8 +6,8 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.unitelecuidado.api_rest.domain.usuario.Usuario;
-import org.unitelecuidado.api_rest.dto.UsuarioAtualizar;
-import org.unitelecuidado.api_rest.dto.UsuarioCadastro;
+import org.unitelecuidado.api_rest.dto.usuario.UsuarioAtualizar;
+import org.unitelecuidado.api_rest.dto.usuario.UsuarioCadastro;
 import org.unitelecuidado.api_rest.repository.UsuarioRepository;
 
 import java.util.List;

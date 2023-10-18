@@ -6,9 +6,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.unitelecuidado.api_rest.dto.UsuarioAtualizar;
-import org.unitelecuidado.api_rest.dto.UsuarioCadastro;
-import org.unitelecuidado.api_rest.dto.UsuarioCargo;
+import org.unitelecuidado.api_rest.dto.usuario.UsuarioAtualizar;
+import org.unitelecuidado.api_rest.dto.usuario.UsuarioCadastro;
+import org.unitelecuidado.api_rest.dto.usuario.UsuarioCargo;
 
 @Table(name = "usuarios")
 @Entity(name = "Usuario")
