@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import org.unitelecuidado.api_rest.dto.paciente.PacienteAtualizar;
 import org.unitelecuidado.api_rest.dto.paciente.PacienteCadastro;
 import org.unitelecuidado.api_rest.dto.paciente.PacienteDesfecho;
+import org.unitelecuidado.api_rest.dto.paciente.PacienteEncaminhamento;
+
 @Table(name = "pacientes")
 @Entity(name = "Paciente")
 @Data
@@ -25,6 +27,10 @@ public class Paciente {
     private String observacoes;
     private String detalhes;
     private boolean ativo;
+    @Enumerated(EnumType.STRING)
+    private PacienteEncaminhamento encaminhamento;
+    private String sexo;
+    private String nascimento;
 
     public Paciente(PacienteCadastro dados){
         this.nome = dados.nome();
@@ -51,6 +57,15 @@ public class Paciente {
         }
         if(dados.detalhes() != null){
             this.detalhes = dados.detalhes();
+        }
+        if(dados.sexo() != null){
+            this.sexo = dados.sexo();
+        }
+        if(dados.encaminhamento() != null){
+            this.encaminhamento = dados.encaminhamento();
+        }
+        if(dados.nascimento() != null){
+            this.nascimento = dados.nascimento();
         }
 
     }

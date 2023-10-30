@@ -15,7 +15,10 @@ public record PacienteAtualizar(
         String telefone,
         PacienteDesfecho desfecho,
         String observacoes,
-        String detalhes
+        String detalhes,
+        String sexo,
+        String nascimento,
+        PacienteEncaminhamento encaminhamento
 
 ) {
 }
