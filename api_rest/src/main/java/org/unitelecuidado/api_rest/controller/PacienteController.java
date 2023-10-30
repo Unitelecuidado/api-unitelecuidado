@@ -8,14 +8,12 @@ import org.springframework.web.bind.annotation.*;
 import org.unitelecuidado.api_rest.domain.paciente.Paciente;
 import org.unitelecuidado.api_rest.dto.paciente.PacienteAtualizar;
 import org.unitelecuidado.api_rest.dto.paciente.PacienteCadastro;
-import org.unitelecuidado.api_rest.dto.usuario.UsuarioAtualizar;
 import org.unitelecuidado.api_rest.repository.PacienteRepository;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/pacientes")
+
 public class PacienteController {
     @Autowired
     private PacienteRepository repository;
@@ -44,9 +42,5 @@ public class PacienteController {
         var paciente = repository.getReferenceById(id);
         paciente.excluir();
     }
-
-
-
-
 
 }

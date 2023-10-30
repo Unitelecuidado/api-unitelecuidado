@@ -26,7 +26,7 @@ public class Usuario {
     @NotBlank (message = "A senha não pode estar em branco!")
     private String senha;
     @Enumerated(EnumType.STRING)
-    @NotNull(message = "Um cargo deve selecionado!")
+    @NotNull(message = "Um cargo deve ser selecionado!")
     private UsuarioCargo cargo;
     private boolean ativo;
 
