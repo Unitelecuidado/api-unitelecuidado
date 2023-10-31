@@ -31,12 +31,14 @@ public class Paciente {
     private PacienteEncaminhamento encaminhamento;
     private String sexo;
     private String nascimento;
+    private String ultima_alteracao;
 
     public Paciente(PacienteCadastro dados){
         this.nome = dados.nome();
         this.telefone = dados.telefone();
         this.desfecho = dados.desfecho();
         this.ativo = dados.ativo();
+        this.ultima_alteracao = dados.ultima_alteracao();
     }
 
     public void atualizarDados(PacienteAtualizar dados){
@@ -66,6 +68,9 @@ public class Paciente {
         }
         if(dados.nascimento() != null){
             this.nascimento = dados.nascimento();
+        }
+        if(dados.ultima_alteracao() != null){
+            this.ultima_alteracao = dados.ultima_alteracao();
         }
 
     }

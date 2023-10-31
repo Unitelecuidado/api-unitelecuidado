@@ -18,7 +18,8 @@ public record PacienteAtualizar(
         String detalhes,
         String sexo,
         String nascimento,
-        PacienteEncaminhamento encaminhamento
+        PacienteEncaminhamento encaminhamento,
+        String ultima_alteracao
 
 ) {
 }

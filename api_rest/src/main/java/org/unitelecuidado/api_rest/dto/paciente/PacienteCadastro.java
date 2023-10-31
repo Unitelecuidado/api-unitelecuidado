@@ -5,7 +5,7 @@ public record PacienteCadastro(
         String nome,
         String telefone,
         PacienteDesfecho desfecho,
+        String ultima_alteracao,
         boolean ativo
-
 ) {
 }
