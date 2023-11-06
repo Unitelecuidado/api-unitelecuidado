@@ -8,5 +8,6 @@ public enum PacienteDesfecho {
     ATENDIDO,
     NAO_DISPONIVEL,
     NAO_LIGAR,
-    NAO_ATENDEU_LIGACAO;
+    NAO_ATENDEU_LIGACAO,
+    TELEFONE_INCORRETO;
 }

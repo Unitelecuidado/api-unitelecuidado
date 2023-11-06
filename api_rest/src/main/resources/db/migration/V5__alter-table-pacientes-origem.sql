@@ -1,0 +1,1 @@
+ALTER TABLE pacientes ADD origem varchar(100);
