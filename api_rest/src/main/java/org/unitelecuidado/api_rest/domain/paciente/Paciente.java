@@ -32,6 +32,7 @@ public class Paciente {
     private String sexo;
     private String nascimento;
     private String ultima_alteracao;
+    private String origem;
 
     public Paciente(PacienteCadastro dados){
         this.nome = dados.nome();
@@ -71,6 +72,9 @@ public class Paciente {
         }
         if(dados.ultima_alteracao() != null){
             this.ultima_alteracao = dados.ultima_alteracao();
+        }
+        if(dados.origem() != null){
+            this.origem = dados.origem();
         }
 
     }
