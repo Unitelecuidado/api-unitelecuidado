@@ -20,7 +20,9 @@ public record PacienteAtualizar(
         String nascimento,
         PacienteEncaminhamento encaminhamento,
         String ultima_alteracao,
-        String origem
+        String origem,
+        String cns,
+        String endereco
 
 ) {
 }

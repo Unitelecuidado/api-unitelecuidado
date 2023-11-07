@@ -33,6 +33,8 @@ public class Paciente {
     private String nascimento;
     private String ultima_alteracao;
     private String origem;
+    private String cns;
+    private String endereco;
 
     public Paciente(PacienteCadastro dados){
         this.nome = dados.nome();
@@ -40,6 +42,7 @@ public class Paciente {
         this.desfecho = dados.desfecho();
         this.ativo = dados.ativo();
         this.ultima_alteracao = dados.ultima_alteracao();
+        this.origem = dados.origem();
     }
 
     public void atualizarDados(PacienteAtualizar dados){
@@ -76,7 +79,12 @@ public class Paciente {
         if(dados.origem() != null){
             this.origem = dados.origem();
         }
-
+        if (dados.cns() != null){
+            this.cns = dados.cns();
+        }
+        if (dados.endereco() != null){
+            this.endereco = dados.endereco();
+        }
     }
 
     public void excluir(){
