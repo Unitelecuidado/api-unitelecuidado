@@ -5,6 +5,7 @@ public record UsuarioCadastro(
         String email,
         String senha,
         UsuarioCargo cargo,
+        UsuarioEspecialidade especialidade,
         boolean ativo
 ) {
 }

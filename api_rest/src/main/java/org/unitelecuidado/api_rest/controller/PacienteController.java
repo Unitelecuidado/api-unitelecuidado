@@ -43,7 +43,6 @@ public class PacienteController {
     }
 
 
-
     @PutMapping
     @Transactional
     public void atualizar(@RequestBody @Valid PacienteAtualizar dados){

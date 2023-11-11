@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.unitelecuidado.api_rest.dto.usuario.UsuarioAtualizar;
 import org.unitelecuidado.api_rest.dto.usuario.UsuarioCadastro;
 import org.unitelecuidado.api_rest.dto.usuario.UsuarioCargo;
+import org.unitelecuidado.api_rest.dto.usuario.UsuarioEspecialidade;
 
 @Table(name = "usuarios")
 @Entity(name = "Usuario")
@@ -28,6 +29,9 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Um cargo deve ser selecionado!")
     private UsuarioCargo cargo;
+    @Enumerated(EnumType.STRING)
+    @NotNull(message = "Uma especialidade deve ser selecionada!")
+    private UsuarioEspecialidade especialidade;
     private boolean ativo;
 
     public Usuario(UsuarioCadastro dados){
@@ -36,6 +40,7 @@ public class Usuario {
         this.senha = dados.senha();
         this.cargo = dados.cargo();
         this.ativo = dados.ativo();
+        this.especialidade = dados.especialidade();
     }
 
     public void atualizarDados(UsuarioAtualizar dados){
@@ -51,11 +56,12 @@ public class Usuario {
         if(dados.cargo() != null){
             this.cargo = dados.cargo();
         }
+        if(dados.especialidade() != null) {
+            this.especialidade = dados.especialidade();
+        }
     }
 
     public void excluir(){
         this.ativo = false;
     }
-
-
 }
