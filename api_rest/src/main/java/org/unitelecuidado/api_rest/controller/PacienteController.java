@@ -6,10 +6,13 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import org.unitelecuidado.api_rest.domain.paciente.Paciente;
 import org.unitelecuidado.api_rest.dto.paciente.PacienteAtualizar;
 import org.unitelecuidado.api_rest.dto.paciente.PacienteCadastro;
 import org.unitelecuidado.api_rest.repository.PacienteRepository;
+
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,39 +25,49 @@ public class PacienteController {
 
     @PostMapping
     @Transactional
-    public void cadastra(@RequestBody @Valid PacienteCadastro dados){
-        repository.save(new Paciente(dados));
+    public ResponseEntity<?> cadastra(@RequestBody @Valid PacienteCadastro dados, UriComponentsBuilder uriBuilder) {
+        Paciente paciente = new Paciente(dados);
+        repository.save(paciente);
+        URI uri = uriBuilder.path("/pacientes/{id}").buildAndExpand(paciente.getId()).toUri();
+        return ResponseEntity.created(uri).body(paciente);
     }
 
     @GetMapping
-    public List<Paciente> lista(){
-        return repository.findAll();
+    public ResponseEntity<List<Paciente>> lista() {
+        List<Paciente> pacientes = repository.findAll();
+        return ResponseEntity.ok(pacientes);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Paciente> listaID(@PathVariable Long id) {
         Optional<Paciente> pacienteOptional = repository.findById(id);
+        return pacienteOptional.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @PutMapping
+    @Transactional
+    public ResponseEntity<?> atualizar(@RequestBody @Valid PacienteAtualizar dados) {
+        Optional<Paciente> pacienteOptional = repository.findById(dados.id());
         if (pacienteOptional.isPresent()) {
             Paciente paciente = pacienteOptional.get();
-            return ResponseEntity.ok(paciente);
+            paciente.atualizarDados(dados);
+            return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
         }
     }
 
-
-    @PutMapping
-    @Transactional
-    public void atualizar(@RequestBody @Valid PacienteAtualizar dados){
-        var paciente = repository.getReferenceById(dados.id());
-        paciente.atualizarDados(dados);
-    }
-
     @DeleteMapping("/{id}")
     @Transactional
-    public void remove(@PathVariable Long id){
-        var paciente = repository.getReferenceById(id);
-        paciente.excluir();
+    public ResponseEntity<?> remove(@PathVariable Long id) {
+        Optional<Paciente> pacienteOptional = repository.findById(id);
+        if (pacienteOptional.isPresent()) {
+            Paciente paciente = pacienteOptional.get();
+            paciente.excluir();
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
