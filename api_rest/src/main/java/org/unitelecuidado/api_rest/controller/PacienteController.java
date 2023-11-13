@@ -33,8 +33,18 @@ public class PacienteController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Paciente>> lista() {
+    public ResponseEntity<List<Paciente>> listaAtivo() {
+        List<Paciente> pacientes = repository.findAllByAtivoTrue();
+        return ResponseEntity.ok(pacientes);
+    }
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Paciente>> listaTodos() {
         List<Paciente> pacientes = repository.findAll();
+        return ResponseEntity.ok(pacientes);
+    }
+    @GetMapping("/inativos")
+    public ResponseEntity<List<Paciente>> listaInativo() {
+        List<Paciente> pacientes = repository.findAllByAtivoFalse();
         return ResponseEntity.ok(pacientes);
     }
 
