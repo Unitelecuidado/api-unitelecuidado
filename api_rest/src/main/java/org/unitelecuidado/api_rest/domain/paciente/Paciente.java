@@ -4,10 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.unitelecuidado.api_rest.dto.paciente.PacienteAtualizar;
-import org.unitelecuidado.api_rest.dto.paciente.PacienteCadastro;
-import org.unitelecuidado.api_rest.dto.paciente.PacienteDesfecho;
-import org.unitelecuidado.api_rest.dto.paciente.PacienteEncaminhamento;
+import org.unitelecuidado.api_rest.dto.paciente.*;
 
 @Table(name = "pacientes")
 @Entity(name = "Paciente")
@@ -35,6 +32,9 @@ public class Paciente {
     private String origem;
     private String cns;
     private String endereco;
+    @Enumerated(EnumType.STRING)
+    private PacienteStatus status;
+
 
     public Paciente(PacienteCadastro dados){
         this.nome = dados.nome();
@@ -43,6 +43,7 @@ public class Paciente {
         this.ativo = dados.ativo();
         this.ultima_alteracao = dados.ultima_alteracao();
         this.origem = dados.origem();
+        this.status = dados.status();
     }
 
     public void atualizarDados(PacienteAtualizar dados){
@@ -84,6 +85,9 @@ public class Paciente {
         }
         if (dados.endereco() != null){
             this.endereco = dados.endereco();
+        }
+        if (dados.status() != null){
+            this.status = dados.status();
         }
     }
 

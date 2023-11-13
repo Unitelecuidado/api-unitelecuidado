@@ -22,7 +22,8 @@ public record PacienteAtualizar(
         String ultima_alteracao,
         String origem,
         String cns,
-        String endereco
+        String endereco,
+        PacienteStatus status
 
 ) {
 }
