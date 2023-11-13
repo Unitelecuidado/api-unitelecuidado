@@ -35,7 +35,6 @@ public class Paciente {
     @Enumerated(EnumType.STRING)
     private PacienteStatus status;
 
-
     public Paciente(PacienteCadastro dados){
         this.nome = dados.nome();
         this.telefone = dados.telefone();
