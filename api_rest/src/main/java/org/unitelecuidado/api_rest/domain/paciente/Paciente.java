@@ -1,5 +1,7 @@
 package org.unitelecuidado.api_rest.domain.paciente;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -10,11 +12,14 @@ import org.unitelecuidado.api_rest.dto.paciente.*;
 @Entity(name = "Paciente")
 @Data
 @NoArgsConstructor
+@Schema(description = "Modelos relacionados a Pacientes")
 public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "ID único do paciente")
     private Long id;
     @NotBlank(message = "O nome não pode estar em branco!")
+    @Schema(description = "Nome do paciente")
     private String nome;
     private String cpf;
     @NotBlank(message = "O telefone não pode estar em branco!")

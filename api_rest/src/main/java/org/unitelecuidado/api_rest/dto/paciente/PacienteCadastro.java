@@ -1,5 +1,7 @@
 package org.unitelecuidado.api_rest.dto.paciente;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 public record PacienteCadastro(
 
         String nome,
